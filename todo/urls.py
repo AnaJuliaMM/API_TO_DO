@@ -6,6 +6,7 @@ from todo.views.task import TaskView
 from todo.views.taskDetail import TaskDetailView
 from todo.views.tag import TagView
 from todo.views.taskTag import TaskTagView
+from todo.views.user import UserView
 
 urlpatterns = [
     path('categories/', CategoryView.as_view()),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('tasks/<int:pk>/', TaskDetailView.as_view()),
     path('tags/', TagView.as_view()),
     path('task_tags/', TaskTagView.as_view()),
+    path('users/', UserView.as_view() )
 ]
