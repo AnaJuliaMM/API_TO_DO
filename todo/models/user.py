@@ -1,3 +1,4 @@
+import hashlib
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -27,8 +28,8 @@ class UserEntity (AbstractUser):
     )
 
     #Redefinimos a forma que os valores do campo password é salvo no banco de dados
-    def save(sellf, *args, **kwargs):
-        #Defnimos o valor como "newPassword"
-        sellf.password = "newPassword"
+    def save(self, *args, **kwargs):
+        #Definimos o valor como "newPassword
+        self.password = hashlib.md5(self.password.encode()).hexdigest()
         #Realiza o save
         super().save(*args, **kwargs)
