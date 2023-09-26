@@ -25,3 +25,10 @@ class UserEntity (AbstractUser):
         upload_to= 'media/profiles/',
         null=True, blank=True
     )
+
+    #Redefinimos a forma que os valores do campo password é salvo no banco de dados
+    def save(sellf, *args, **kwargs):
+        #Defnimos o valor como "newPassword"
+        sellf.password = "newPassword"
+        #Realiza o save
+        super().save(*args, **kwargs)
